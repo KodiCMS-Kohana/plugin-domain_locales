@@ -8,11 +8,10 @@ Observer::observe('frontpage_requested', function() {
 
 		foreach ($data as $domain => $locale)
 		{
-			if (strpos($domain, Request::$host) !== FALSE)
+			if (strpos(Request::$host, $domain) !== FALSE AND !empty($locale))
 			{
 				I18n::lang($locale);
 			}
 		}
 	}
-
 });
